@@ -24,10 +24,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val factory = repository?.let { UserViewModelFactory(it) }
         userViewModel = ViewModelProvider(this, factory!!).get(UserViewModel::class.java)
 
+        val name = arguments?.getString("Name")
+        val email = arguments?.getString("Email")
+        if (name != null && email != null) {
+            userViewModel.insert(User(0, name, email))
+        }
+
         userViewModel.insert(User(0, "User1", "johnDoe@gmail.com"))
-        userViewModel.insert(User(0, "User2", "alexa@gmail.com"))
-        userViewModel.insert(User(0, "User3", "ana@gmail.com"))
-        userViewModel.insert(User(0, "User4", "kate@gmail.com"))
+
 
         initRecyclerView()
 
@@ -41,11 +45,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun displayUsersList() {
         userViewModel.users.observe(viewLifecycleOwner, Observer {
             Log.e("TAG", it.toString())
-            recylcerViewHome.adapter = RecyclerViewAdapter(it,{selectedItem:User -> listItemClicked(selectedItem)})
+            recylcerViewHome.adapter =
+                RecyclerViewAdapter(it, { selectedItem: User -> listItemClicked(selectedItem) })
         })
     }
 
-    private fun listItemClicked(user: User){
+    private fun listItemClicked(user: User) {
         userViewModel.delete(user)
     }
 }

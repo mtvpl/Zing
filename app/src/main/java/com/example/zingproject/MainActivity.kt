@@ -3,10 +3,11 @@ package com.example.zingproject
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.zingproject.Service.FirebaseService
-import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.installations.FirebaseInstallations
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +19,27 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         main_bottom_nav.setupWithNavController(navController)
 
+        //Log.d("MainActivity","Testing");
+
         FirebaseService.sharedPref = getSharedPreferences("Zing App", Context.MODE_PRIVATE)
-        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
-            FirebaseService.token = it.token
+
+        FirebaseInstallations.getInstance().id.addOnCompleteListener {
+            if(it.isComplete){
+                Log.e("FirebaseId",it.result.toString())
+            }
         }
+
+
+        /*
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
+           //FirebaseService.token = it.token
+
+
+        }
+
+         */
+
+
 
         if (intent != null && intent.hasExtra("Name")) {
 

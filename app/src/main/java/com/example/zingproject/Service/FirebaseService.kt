@@ -68,7 +68,7 @@ class FirebaseService : FirebaseMessagingService() {
 
         notificationManager.notify(notificationId, notification)
 
-        // Log.e("TAG", message.data["title"] + message.data["message"])
+         Log.e("TAG", message.data["Name"] + message.data["Email"])
 
 
     }

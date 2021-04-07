@@ -1,6 +1,7 @@
 package com.example.zingproject
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -33,11 +34,28 @@ class RecyclerViewAdapter(
 class MyViewHolder(val binding: ListItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(user: User, clickListener: (User) -> Unit) {
-        binding.textName.text = user.name
-        binding.textEmail.text = user.email
+        binding.textName.text = user.title
+        binding.textEmail.text = user.body
+        binding.textId.text = user.id.toString()
+        binding.textMsgRead.text = user.msgRead.toString()
+        binding.textDeleted.text  = user.deleted.toString()
+        binding.textMsgType.text  = user.msgType
+        binding.textSenderId.text = user.senderId
+        binding.textSenderRef.text = user.senderRef
+        binding.textSeqNo.text = user.seqNo.toString()
+        binding.textDataPart.text = user.dataPart
+        binding.textTimeStamp.text = user.date
+
+
         binding.imageDelete.setOnClickListener {
             clickListener(user)
         }
+
+        binding.parentLayout.setOnClickListener {
+            binding.expandableLayout.visibility = View.VISIBLE
+        }
+
+
     }
 
 

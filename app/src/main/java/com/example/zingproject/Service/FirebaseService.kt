@@ -3,19 +3,18 @@ package com.example.zingproject.Service
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import androidx.core.content.getSystemService
 import androidx.navigation.NavDeepLinkBuilder
 import com.example.zingproject.MainActivity
 import com.example.zingproject.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import org.json.JSONObject
 import kotlin.random.Random
 
 
@@ -48,8 +47,23 @@ class FirebaseService : FirebaseMessagingService() {
         }
 
         val args = Bundle()
-        args.putString("Name", message.data["Name"])
-        args.putString("Email",message.data["Email"])
+        args.putString("seqNo", message.data["seqNo"])
+        args.putString("title", message.data["title"])
+        args.putString("senderRef", message.data["senderRef"])
+        args.putString("senderId", message.data["senderId"])
+        args.putString("body", message.data["body"])
+        args.putString("msgRef", message.data["msgRef"])
+        args.putString("msgType", message.data["msgType"])
+
+        args.putString("ts", message.data["ts"])
+        args.putString("deleted", message.data["deleted"])
+        args.putString("msgRead", message.data["msgRead"])
+
+        val params: Map<String, String> = message.data
+        val jsonObject = JSONObject(params)
+        val dataPart = jsonObject.get("dataPart").toString()
+
+        args.putString("dataPart", dataPart)
 
         val pendingIntent = NavDeepLinkBuilder(this)
             .setComponentName(MainActivity::class.java)
@@ -68,7 +82,7 @@ class FirebaseService : FirebaseMessagingService() {
 
         notificationManager.notify(notificationId, notification)
 
-         Log.e("TAG", message.data["Name"] + message.data["Email"])
+        Log.e("TAG", message.data["Name"] + message.data["Email"])
 
 
     }

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Zing Project</string>
+    <string name="fcm_token">FCM Token :%s</string>
+    <string name ="id">ID : %s</string>
+    <string name="SeqNo">SeqNo :%s</string>
+    <string name="senderRef">SenderRef :%s</string>
+    <string name="senderId">SenderId: %s</string>
+    <string name="body">Body: %s</string>
+    <string name="msgRef">MsgRef :%s</string>
+    <string name="msgType">MsgType :%s</string>
+    <string name="dataPart">DataPart: %s</string>
+    <string name="timeStamp">TimeStamp: %s</string>
+    <string name="deleted">Deleted :%s</string>
+    <string name="msgRead">MsgRead :%s</string>
+    <string name="Title">Title: %s</string>
 </resources>

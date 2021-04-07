@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.zingproject.Service.FirebaseService
 import com.google.firebase.installations.FirebaseInstallations
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         FirebaseService.sharedPref = getSharedPreferences("Zing App", Context.MODE_PRIVATE)
 
         FirebaseInstallations.getInstance().id.addOnCompleteListener {
-            if(it.isComplete){
-                Log.e("FirebaseId",it.result.toString())
+            if (it.isComplete) {
+                Log.e("FirebaseId", it.result.toString())
             }
         }
 
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        if (intent != null && intent.hasExtra("Name")) {
+        if (intent != null && intent.hasExtra("title")) {
 
             val args = Bundle()
             for (key in intent.extras!!.keySet()) {

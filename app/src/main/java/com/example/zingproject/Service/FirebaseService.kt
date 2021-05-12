@@ -10,7 +10,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
-import com.example.zingproject.MainActivity
+import com.example.zingproject.activity.MainActivity
 import com.example.zingproject.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage

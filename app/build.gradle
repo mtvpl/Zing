@@ -29,6 +29,10 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    dexOptions{
+        incremental true
+    }
 }
 
 dependencies {
@@ -42,6 +46,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-crashlytics:17.4.0'
     implementation 'com.google.firebase:firebase-analytics:18.0.2'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -66,5 +71,11 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
+    //multi-language library
+    implementation 'com.akexorcist:localization:1.2.10'
+
 
 }

@@ -1,10 +1,11 @@
-package com.example.zingproject
+package com.example.zingproject.fragments
 
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.zingproject.R
 import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment :Fragment(R.layout.fragment_second) {

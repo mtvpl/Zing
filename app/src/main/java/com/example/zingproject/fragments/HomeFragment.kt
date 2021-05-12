@@ -1,6 +1,5 @@
-package com.example.zingproject
+package com.example.zingproject.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,7 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.zingproject.R
+import com.example.zingproject.RecyclerViewAdapter
 import com.example.zingproject.Service.FirebaseService
+import com.example.zingproject.UserViewModel
+import com.example.zingproject.UserViewModelFactory
 import com.example.zingproject.database.User
 import com.example.zingproject.database.UserDatabase
 import com.example.zingproject.repository.UserRepository

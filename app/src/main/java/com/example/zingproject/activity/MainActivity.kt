@@ -1,17 +1,17 @@
-package com.example.zingproject
+package com.example.zingproject.activity
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.akexorcist.localizationactivity.ui.LocalizationActivity
+import com.example.zingproject.R
 import com.example.zingproject.Service.FirebaseService
 import com.google.firebase.installations.FirebaseInstallations
 import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONObject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : LocalizationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,5 +53,11 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.homeFragment, args)
 
         }
+
+
     }
+
+
+
+
 }
